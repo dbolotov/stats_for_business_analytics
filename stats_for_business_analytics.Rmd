@@ -1,0 +1,37 @@
+---
+title: "Statistics for Business Analytics A-Z Notes"
+output:
+  html_document:
+    theme: cerulean
+    highlight: tango
+    fig_width: 6
+    fig_height: 4
+    toc: true
+    toc_depth: 2
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+require("knitr")
+```
+
+# Introduction
+
+This is a set of notes for the Statistics for Business Analytics A-Z on Udemy.
+
+***
+
+# Section 1
+## Additional resources
+- [Podcast episode - geospatial analytics](https://www.superdatascience.com/podcast-application-geospatial-analytics-business-real-life/)
+
+***
+
+# Section 2 - Distributions
+
+
+***
+
+# Section 3 - Central Limit Theorem
+
+
