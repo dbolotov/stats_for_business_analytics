@@ -2,8 +2,8 @@
 title: "Statistics for Business Analytics A-Z: Course Notes"
 output:
   html_document:
-    theme: cerulean
-    highlight: tango
+    theme: lumen
+    highlight: textmate
     fig_width: 6
     fig_height: 4
     toc: true
@@ -42,17 +42,66 @@ This is a set of notes for the [Statistics for Business Analytics A-Z Course](ht
 ### Visualizing distributions
 - Discrete distributions are represented by bar charts, where the sum of all bar heights adds up to 1.
 - Continuous distributions are visualized by a curve (probability density function). 
-	- The probability of an exact value (on the x axis) is 0, and there is an unlimited amount of numbers. 
-	- Probability is quantified as the area under the curve between two numbers: P(a < x b) = shaded area; calculated by integration. 
-	- The total area under the curve is 1.
+	  - The probability of an exact value (on the x axis) is 0, and there is an unlimited amount of numbers. 
+	  - Probability is quantified as the area under the curve between two numbers: P(a < x b) = shaded area; calculated by integration. 
+	  - The total area under the curve is 1.
 
 ## What is standard deviation?
 - Variance is a measure of spread of the data about the mean: $$\sigma^2 = \frac{\Sigma_{i=1}^N(x_i - \mu)^2}{N}.$$ Variance is low when the spread of the data is low.
 - Standard deviation is the square root of the variance. It is useful because it is defined in the same units as the original data and the mean.
 
 ## Normal distribution
-- Defined by the probability density function $$p(x) = \frac{1}{\sigma\sqrt{2\pi}}e^{(-\frac{(x-\mu)^2}{2\sigma^2})}.$$.
+- Defined by the probability density function $$p(x) = \frac{1}{\sigma\sqrt{2\pi}}e^{(-\frac{(x-\mu)^2}{2\sigma^2})}.$$
 - For a normal distribution, the probability of an observation falling between the mean and 1 $\sigma$ away is 34.1%. Probability of falling between $-2\sigma$ and $+2\sigma$ is 95.4%.
+
+## Skewness
+- Distributions can be left (negative) skewed (longer tail on left) or right (positive) skewed (longer tail on right).
+    - A left-skewed distribution has more outliers on the left.
+
+## Mean, Median, Mode
+- Include duplicates when calculating these statistics if duplicates are present in the data.
+- For a right-skewed distribution, the median is to the right of the mean, and the mode is to the right of the median. To remember the order: the 3 statistics are in alphabetical order for a left-skewed distribution.
+- The median is usually not affected by outliers as much as the mean.
+
+***
+
+# Section 3: Central Limit Theorem
+
+## Populations & Samples
+- A sample is a subset of the population.
+- Parameters of a population: $N$ (number of observations in population), $\mu$ (mean), $\sigma$ (standard deviation).
+    - Parameters are attributed to the whole population.
+- Statistics of a sample: $n$ (number of observations in sample), $\bar{x}$ (sample mean), $s$ (sample standard deviation).
+    - The statistics of a sample are used to assess the parameters of the population.
+
+## Sampling Distribution
+- Taking samples is not always useful, and should be solved with more advanced techniques. The sampling distribution is discussed here for this purpose.
+- The sampling distribution is a set of samples of observations (e.g., each sample might have 10 observations, and there are a total of 20 such samples in the set). For each sample, take a mean. All the statistics make up the *sample distribution of the sample mean*.
+
+## Central Limit Theorem
+- Said to be one of the most important theorems in math and statistics.
+- CLT states that given enough samples, the sample distribution of the sample mean looks like a normal distribution, regardless of the distribution of the original population.
+
+## Central Limit Theorem - Intuition
+- The mean of the sampling distribution of the sample mean equals the mean of the original distribution: $\mu_{\bar{x}} = \mu$. The sample means are distributed around the mean of the original distribution.
+    - This is useful because the true mean of the population is not known.
+- The standard deviation of the sampling distribution is related to the standard deviation of the population: $\sigma_{\bar{x}} = \frac{\sigma}{\sqrt{n}}$, where $\sigma$ is the standard deviation of the original population and $n$ the number of observations in each sample.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
