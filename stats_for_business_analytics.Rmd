@@ -1,5 +1,5 @@
 ---
-title: "Statistics for Business Analytics A-Z Notes"
+title: "Statistics for Business Analytics A-Z: Course Notes"
 output:
   html_document:
     theme: cerulean
@@ -17,7 +17,7 @@ require("knitr")
 
 # Introduction
 
-This is a set of notes for the Statistics for Business Analytics A-Z on Udemy.
+This is a set of notes for the [Statistics for Business Analytics A-Z Course](https://www.udemy.com/data-statistics) on Udemy.
 
 ***
 
@@ -27,11 +27,43 @@ This is a set of notes for the Statistics for Business Analytics A-Z on Udemy.
 
 ***
 
-# Section 2 - Distributions
+# Section 2: Distributions
+
+## Continuous vs Discrete
+- Continuous variables can take any real value without any restrictions.
+- Discrete variables can only take specific values.
+- Example: foot size (continuous) vs shoe size (discrete)
+
+## What is a distribution?
+- A probability distribution is a mathematical function that can be thought of as providing the probability of occurrence of different possible outcomes in an experiment ([Wikipedia](https://en.wikipedia.org/wiki/Probability_distribution)).
+- A distribution is a function linked to the underlying observations.
+- A distribution provides the probability that an observation has a specific value.
+
+### Visualizing distributions
+- Discrete distributions are represented by bar charts, where the sum of all bar heights adds up to 1.
+- Continuous distributions are visualized by a curve (probability density function). 
+	- The probability of an exact value (on the x axis) is 0, and there is an unlimited amount of numbers. 
+	- Probability is quantified as the area under the curve between two numbers: P(a < x b) = shaded area; calculated by integration. 
+	- The total area under the curve is 1.
+
+## What is standard deviation?
+- Variance is a measure of spread of the data about the mean: $$\sigma^2 = \frac{\Sigma_{i=1}^N(x_i - \mu)^2}{N}.$$ Variance is low when the spread of the data is low.
+- Standard deviation is the square root of the variance. It is useful because it is defined in the same units as the original data and the mean.
+
+## Normal distribution
+- Defined by the probability density function $$p(x) = \frac{1}{\sigma\sqrt{2\pi}}e^{(-\frac{(x-\mu)^2}{2\sigma^2})}.$$.
+- For a normal distribution, the probability of an observation falling between the mean and 1 $\sigma$ away is 34.1%. Probability of falling between $-2\sigma$ and $+2\sigma$ is 95.4%.
 
 
-***
 
-# Section 3 - Central Limit Theorem
+
+
+
+
+
+
+
+
+
 
 
