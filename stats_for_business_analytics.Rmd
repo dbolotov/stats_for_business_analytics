@@ -87,9 +87,11 @@ This is a set of notes for the [Statistics for Business Analytics A-Z Course](ht
     - This is useful because the true mean of the population is not known.
 - The standard deviation of the sampling distribution is related to the standard deviation of the population: $\sigma_{\bar{x}} = \frac{\sigma}{\sqrt{n}}$, where $\sigma$ is the standard deviation of the original population and $n$ the number of observations in each sample.
 
+## Central Limit Theorem - Visualization
+- Visualize CLT at [onlinestatbook.com](http://onlinestatbook.com/stat_sim/sampling_dist/index.html).
+- The sample distribution gets closer to normal when $n$ is large.
 
-
-
+## Z-score
 
 
 
