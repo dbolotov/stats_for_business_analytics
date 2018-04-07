@@ -91,7 +91,48 @@ This is a set of notes for the [Statistics for Business Analytics A-Z Course](ht
 - Visualize CLT at [onlinestatbook.com](http://onlinestatbook.com/stat_sim/sampling_dist/index.html).
 - The sample distribution gets closer to normal when $n$ is large.
 
-## Z-score
+
+## Z-Score (aka Standard Score, Normal Score, Normalized Variable)
+- Percentage of observations between standard deviations: -1 to 1: 68.2%, -2 to 2: 95.4%, -3 to 3: 99.8%.
+- Z-score is defined as $Z = \frac{x-\mu}{\sigma}$. It is the amount of standard deviations that a point $x$ is away from the mean $\mu$.
+- Applied to all values, this procedure transforms the data to have $\mu=0$ and $\sigma=1$. A distribution with such mean and standard deviation is said to be normalized.
+- Standard normal probability tables can be used to find probabilities.
+
+## Hands-On CLT - Analytics Challenge
+
+### Challenge
+
+- You are a Business Analyst working for FedEx.
+- A business client has requested a large freight to be transported urgently from Denver to Salt Lake City. When asked about the weight of the cargo they could not supply the exact weight, however they have specified that there are a total of 36 boxes. 
+- From prior experience with this client you know that this type of cargo follows a distribution with a mean of $\mu$ = 72lb (32.66kg) and a std. dev. of $\sigma$ = 3lb (1.36kg).
+- The only plane you currently have at Denver is a *Cessna 208B Grand Caravan* with a max cargo weight of 2630lb (1193kg).
+- Based on this information what is the probability that all of the cargo can be safely loaded onto the plane and transported?
+
+### Solution
+- We know that the population parameters are $\mu$ = 72 and $\sigma$ = 3, but we don't know what the distribution looks like (most likely, the distribution is not normal).
+- We know that the sampling distribution of the sample mean looks like a normal distribution. We also know that the mean of this sampling distribution is the same as $\mu$, and standard deviation of the sampling distribution is $\sigma/sqrt{n}$, where $n$=36.
+- The plane capacity is 2640lb, so the critical mass for each box is $x_{crit} = \frac{2640lb}{36 boxes} = 73.06 lb/box$. This amount is to the left of the sample mean $\mu_{\bar{x}}.
+- Calculate how far $x_{crit}$ is from $\mu$: $z = \frac{x_{crit} - \mu_{bar{x}}}{\sigma_{\bar{x}}} = \frac{73.06-72}{0.5}=2.12$.
+- Find 2.12 in a z-score probability table: $P(x < x_{crit}) = 0.9830 = 98.3%$.
+- Therefore, the probability that the cargo can be safely loaded onto the plane is 98.3%.
+
+# Section 4: Hypothesis Testing
+
+## Hypothesis Testing Steps
+- Challenge: In 2015, millenials were watching 26.5 hours of TV a week with a $\sigma$ of 10 hours. Today you surveyed 50 millenials and found that they watch 24 hours of TV per week. Has the parameter decreased?
+- Steps:
+	- State the null hypothesis - $H_0$: the parameter has not decreased, i.e. $\mu \gte 26.5$.
+	- State the alternative hypothesis - $H_1$: the parameter has decreased, i.e. $\mu < 26.5$.
+		- Note: if we reject $H_0$, we can't say that the average is 24 hours. We can only say that the average has decreased.
+	- Apply the concepts from CLT:
+		- $\mu_{\bar{x}} = \mu = 26.5$.
+		- $\sigma_{\bar{x}} = \frac{\sigma}{\sqrt{n}}$ = \frac{10}{\sqrt{50}} = 1.41$.
+		- $\bar{x} = 24$.
+	- Ask the question: how likely that we just randomly picked a sample of 50 millenials with a sample mean $\bar{x}$ that is so far away from the sample mean? Put another way: assuming that $H_0$ is true, how likely is it that we picked $\bar{x}$ at random?
+	- Calculate the z-score: $z = \frac{24 - 26.5}{1.41} = -1.77$. 
+	- So the p-value is $P = 0.0384 = 3.84%$ (found in probability table).
+		- This is interpreted as: the probability of picking $\bar{x} to be 24 or less is 3.84%.
+		- This value is less than 5%, so with 95% confidence, we reject the null hypothesis. We accept $H_1$, that the parameter is less than 26.5.
 
 
 

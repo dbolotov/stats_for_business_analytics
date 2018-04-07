@@ -141,7 +141,11 @@ $(document).ready(function () {
 <li><a href="#central-limit-theorem">Central Limit Theorem</a></li>
 <li><a href="#central-limit-theorem---intuition">Central Limit Theorem - Intuition</a></li>
 <li><a href="#central-limit-theorem---visualization">Central Limit Theorem - Visualization</a></li>
-<li><a href="#z-score">Z-score</a></li>
+<li><a href="#z-score-aka-standard-score-normal-score-normalized-variable">Z-Score (aka Standard Score, Normal Score, Normalized Variable)</a></li>
+<li><a href="#hands-on-clt---analytics-challenge">Hands-On CLT - Analytics Challenge</a></li>
+</ul></li>
+<li><a href="#section-4-hypothesis-testing">Section 4: Hypothesis Testing</a><ul>
+<li><a href="#hypothesis-testing-steps">Hypothesis Testing Steps</a></li>
 </ul></li>
 </ul>
 </div>
@@ -271,8 +275,68 @@ $(document).ready(function () {
 <li>The sample distribution gets closer to normal when <span class="math inline">\(n\)</span> is large.</li>
 </ul>
 </div>
-<div id="z-score" class="section level2">
-<h2>Z-score</h2>
+<div id="z-score-aka-standard-score-normal-score-normalized-variable" class="section level2">
+<h2>Z-Score (aka Standard Score, Normal Score, Normalized Variable)</h2>
+<ul>
+<li>Percentage of observations between standard deviations: -1 to 1: 68.2%, -2 to 2: 95.4%, -3 to 3: 99.8%.</li>
+<li>Z-score is defined as <span class="math inline">\(Z = \frac{x-\mu}{\sigma}\)</span>. It is the amount of standard deviations that a point <span class="math inline">\(x\)</span> is away from the mean <span class="math inline">\(\mu\)</span>.</li>
+<li>Applied to all values, this procedure transforms the data to have <span class="math inline">\(\mu=0\)</span> and <span class="math inline">\(\sigma=1\)</span>. A distribution with such mean and standard deviation is said to be normalized.</li>
+<li>Standard normal probability tables can be used to find probabilities.</li>
+</ul>
+</div>
+<div id="hands-on-clt---analytics-challenge" class="section level2">
+<h2>Hands-On CLT - Analytics Challenge</h2>
+<div id="challenge" class="section level3">
+<h3>Challenge</h3>
+<ul>
+<li>You are a Business Analyst working for FedEx.</li>
+<li>A business client has requested a large freight to be transported urgently from Denver to Salt Lake City. When asked about the weight of the cargo they could not supply the exact weight, however they have specified that there are a total of 36 boxes.</li>
+<li>From prior experience with this client you know that this type of cargo follows a distribution with a mean of <span class="math inline">\(\mu\)</span> = 72lb (32.66kg) and a std. dev. of <span class="math inline">\(\sigma\)</span> = 3lb (1.36kg).</li>
+<li>The only plane you currently have at Denver is a <em>Cessna 208B Grand Caravan</em> with a max cargo weight of 2630lb (1193kg).</li>
+<li>Based on this information what is the probability that all of the cargo can be safely loaded onto the plane and transported?</li>
+</ul>
+</div>
+<div id="solution" class="section level3">
+<h3>Solution</h3>
+<ul>
+<li>We know that the population parameters are <span class="math inline">\(\mu\)</span> = 72 and <span class="math inline">\(\sigma\)</span> = 3, but we don’t know what the distribution looks like (most likely, the distribution is not normal).</li>
+<li>We know that the sampling distribution of the sample mean looks like a normal distribution. We also know that the mean of this sampling distribution is the same as <span class="math inline">\(\mu\)</span>, and standard deviation of the sampling distribution is <span class="math inline">\(\sigma/sqrt{n}\)</span>, where <span class="math inline">\(n\)</span>=36.</li>
+<li>The plane capacity is 2640lb, so the critical mass for each box is <span class="math inline">\(x_{crit} = \frac{2640lb}{36 boxes} = 73.06 lb/box\)</span>. This amount is to the left of the sample mean $_{{x}}.</li>
+<li>Calculate how far <span class="math inline">\(x_{crit}\)</span> is from <span class="math inline">\(\mu\)</span>: <span class="math inline">\(z = \frac{x_{crit} - \mu_{bar{x}}}{\sigma_{\bar{x}}} = \frac{73.06-72}{0.5}=2.12\)</span>.</li>
+<li>Find 2.12 in a z-score probability table: <span class="math inline">\(P(x &lt; x_{crit}) = 0.9830 = 98.3%\)</span>.</li>
+<li>Therefore, the probability that the cargo can be safely loaded onto the plane is 98.3%.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="section-4-hypothesis-testing" class="section level1">
+<h1>Section 4: Hypothesis Testing</h1>
+<div id="hypothesis-testing-steps" class="section level2">
+<h2>Hypothesis Testing Steps</h2>
+<ul>
+<li>Challenge: In 2015, millenials were watching 26.5 hours of TV a week with a <span class="math inline">\(\sigma\)</span> of 10 hours. Today you surveyed 50 millenials and found that they watch 24 hours of TV per week. Has the parameter decreased?</li>
+<li>Steps:
+<ul>
+<li>State the null hypothesis - <span class="math inline">\(H_0\)</span>: the parameter has not decreased, i.e. <span class="math inline">\(\mu \gte 26.5\)</span>.</li>
+<li>State the alternative hypothesis - <span class="math inline">\(H_1\)</span>: the parameter has decreased, i.e. <span class="math inline">\(\mu &lt; 26.5\)</span>.
+<ul>
+<li>Note: if we reject <span class="math inline">\(H_0\)</span>, we can’t say that the average is 24 hours. We can only say that the average has decreased.</li>
+</ul></li>
+<li>Apply the concepts from CLT:
+<ul>
+<li><span class="math inline">\(\mu_{\bar{x}} = \mu = 26.5\)</span>.</li>
+<li><span class="math inline">\(\sigma_{\bar{x}} = \frac{\sigma}{\sqrt{n}}\)</span> =  = 1.41$.</li>
+<li><span class="math inline">\(\bar{x} = 24\)</span>.</li>
+</ul></li>
+<li>Ask the question: how likely that we just randomly picked a sample of 50 millenials with a sample mean <span class="math inline">\(\bar{x}\)</span> that is so far away from the sample mean? Put another way: assuming that <span class="math inline">\(H_0\)</span> is true, how likely is it that we picked <span class="math inline">\(\bar{x}\)</span> at random?</li>
+<li>Calculate the z-score: <span class="math inline">\(z = \frac{24 - 26.5}{1.41} = -1.77\)</span>.</li>
+<li>So the p-value is <span class="math inline">\(P = 0.0384 = 3.84%\)</span> (found in probability table).
+<ul>
+<li>This is interpreted as: the probability of picking ${x} to be 24 or less is 3.84%.</li>
+<li>This value is less than 5%, so with 95% confidence, we reject the null hypothesis. We accept <span class="math inline">\(H_1\)</span>, that the parameter is less than 26.5.</li>
+</ul></li>
+</ul></li>
+</ul>
 </div>
 </div>
 
