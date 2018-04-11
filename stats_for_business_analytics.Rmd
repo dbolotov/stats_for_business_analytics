@@ -7,7 +7,7 @@ output:
     fig_width: 6
     fig_height: 4
     toc: true
-    toc_depth: 2
+    toc_depth: 1
 ---
 
 ```{r setup, include=FALSE}
@@ -134,6 +134,56 @@ This is a set of notes for the [Statistics for Business Analytics A-Z Course](ht
 		- This is interpreted as: the probability of picking $\bar{x} to be 24 or less is 3.84%.
 		- This value is less than 5%, so with 95% confidence, we reject the null hypothesis. We accept $H_1$, that the parameter is less than 26.5.
 
+
+## Statistical Significance - Intuition
+- Coin toss example: determine if a coin is fair or not.
+	- $H_0$: this is a fair coin.
+	- $H_1$: this is not a fair coin.
+	- Assume that the coin is fair, and that each consecutive flip is returning tails. In this case, the p-value for tails in one toss is 0.5. The p-value for 2 consecutive tails is (0.5)(0.5) = 0.25. The p-value decreases with each toss.
+	- If we knew that the coin is not fair, and keep getting consecutive tails, the p-value will not decrease as above.
+	- Set the cutoff at $\alpha$ = 0.05. Once p-value is below $\alpha$, reject $H_0$ with 95% confidence.
+		- $\alpha$ can be set to any value. E.g., 0.01 for medical applications.
+
+## Hypothesis Testing - Rejection Region
+- (Using same TV example from above)
+- This is an alternative way of seeing hypothesis testing.
+- Find $z_crit$ (in a probability table) such that there is a 5% chance of the event falling to the left of z on the pdf (if $\bar{x}$ is less than the mean): $z_crit$ = -1.65.
+- The area to the left of $z_crit$ is the *rejection region*. The likelihood of randomly picking a sample from the rejection region is 5% or less. If the calculated $z$ is in this region, can reject $H_0$.
+- This approach allows to set a confidence threshold (e.g., 95%) instead of having to look up z exactly in the probability table each time.
+
+## Hypothesis Testing Assumptions
+- Z-test assumptions:
+	- 1. Sample is selected at random.
+		- This assumption must hold throughout the entire experiment.
+		- Simply increasing the sample size does not necessarily remove bias.
+		- Example - for a phone survey conducted by calling phone numbers from a phone book, this will be biased towards people that still have a landline.
+	- 2. Observations are independent.
+		- Example: surveying the people in a room. If a person overhears others' examples, there might be peer pressure to respond similarly.
+	- 3. Population standard deviation is known, OR the sample contains at least 30 observations (use t-test if <30).
+
+## Proportion Testing
+- Challenge: According to a 2016 survey, *"a staggering 58% of American households have tablets."* Your manager has asked you to test the Hypothesis (with a 97% significance level) that only 58% of American homes have tablet devices. You surveyed 100 random households and found that 73 of them had tablets.
+- $H_0$: 58% or fewer of households have tablets, i.e. $p \loe 58%$.
+- $H_1$: more than 58% have tablets, i.e. $p > 58%$.
+	- $p$ is proportion.
+- Perform two checks for proportion test:
+	- 1. Check that $n\bar{p}$ > 10.
+		- In example, $\bar{p}$ = 73/100, $n$ = 100.
+	- 2. Check that $n\bar{q}$ > 10.
+		- $\bar{q} = \bar{p}-1$
+		- In example, $\bar{q} in example is 0.27.
+	- In the sample, the number of positive and negative observations both have to be greater than 10. If condition is not met, increase the sample size.
+- New formulas (not derived here):
+	- $\mu = p$
+	- $\sigma = \sqrt{pq}$
+- Calculations:
+	- $\mu_{\bar{p}} = \mu = p = 0.58$ (from CLT)
+	- $\sigma = \sqrt{pq} = \sqrt{(0.58)(0.42)} = 0.49$ (This assumes that $H_0$ is correct to be able to use p=0.58)
+	- $\sigma_{\bar{p}} = \frac{\sigma}{\sqrt{n}} (from CLT)
+	- $\bar{p} = 73/100 = 0.73$ (given in problem)
+	- $z = \frac{\bar{p}-\mu_{\bar{p}}}{\sigma_{\bar{p}}} = \frac{0.73-0.58}{0.049} = 3.06$
+	- p-value = 1 - 0.9989 = 0.11% < 3%
+- Therefore, we can reject $H_0$ with >97% confidence and accept $H_1$.
 
 
 

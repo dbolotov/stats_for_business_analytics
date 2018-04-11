@@ -124,29 +124,10 @@ $(document).ready(function () {
 <div id="TOC">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
-<li><a href="#section-1">Section 1</a><ul>
-<li><a href="#additional-resources">Additional resources</a></li>
-</ul></li>
-<li><a href="#section-2-distributions">Section 2: Distributions</a><ul>
-<li><a href="#continuous-vs-discrete">Continuous vs Discrete</a></li>
-<li><a href="#what-is-a-distribution">What is a distribution?</a></li>
-<li><a href="#what-is-standard-deviation">What is standard deviation?</a></li>
-<li><a href="#normal-distribution">Normal distribution</a></li>
-<li><a href="#skewness">Skewness</a></li>
-<li><a href="#mean-median-mode">Mean, Median, Mode</a></li>
-</ul></li>
-<li><a href="#section-3-central-limit-theorem">Section 3: Central Limit Theorem</a><ul>
-<li><a href="#populations-samples">Populations &amp; Samples</a></li>
-<li><a href="#sampling-distribution">Sampling Distribution</a></li>
-<li><a href="#central-limit-theorem">Central Limit Theorem</a></li>
-<li><a href="#central-limit-theorem---intuition">Central Limit Theorem - Intuition</a></li>
-<li><a href="#central-limit-theorem---visualization">Central Limit Theorem - Visualization</a></li>
-<li><a href="#z-score-aka-standard-score-normal-score-normalized-variable">Z-Score (aka Standard Score, Normal Score, Normalized Variable)</a></li>
-<li><a href="#hands-on-clt---analytics-challenge">Hands-On CLT - Analytics Challenge</a></li>
-</ul></li>
-<li><a href="#section-4-hypothesis-testing">Section 4: Hypothesis Testing</a><ul>
-<li><a href="#hypothesis-testing-steps">Hypothesis Testing Steps</a></li>
-</ul></li>
+<li><a href="#section-1">Section 1</a></li>
+<li><a href="#section-2-distributions">Section 2: Distributions</a></li>
+<li><a href="#section-3-central-limit-theorem">Section 3: Central Limit Theorem</a></li>
+<li><a href="#section-4-hypothesis-testing">Section 4: Hypothesis Testing</a></li>
 </ul>
 </div>
 
@@ -336,6 +317,100 @@ $(document).ready(function () {
 <li>This value is less than 5%, so with 95% confidence, we reject the null hypothesis. We accept <span class="math inline">\(H_1\)</span>, that the parameter is less than 26.5.</li>
 </ul></li>
 </ul></li>
+</ul>
+</div>
+<div id="statistical-significance---intuition" class="section level2">
+<h2>Statistical Significance - Intuition</h2>
+<ul>
+<li>Coin toss example: determine if a coin is fair or not.
+<ul>
+<li><span class="math inline">\(H_0\)</span>: this is a fair coin.</li>
+<li><span class="math inline">\(H_1\)</span>: this is not a fair coin.</li>
+<li>Assume that the coin is fair, and that each consecutive flip is returning tails. In this case, the p-value for tails in one toss is 0.5. The p-value for 2 consecutive tails is (0.5)(0.5) = 0.25. The p-value decreases with each toss.</li>
+<li>If we knew that the coin is not fair, and keep getting consecutive tails, the p-value will not decrease as above.</li>
+<li>Set the cutoff at <span class="math inline">\(\alpha\)</span> = 0.05. Once p-value is below <span class="math inline">\(\alpha\)</span>, reject <span class="math inline">\(H_0\)</span> with 95% confidence.
+<ul>
+<li><span class="math inline">\(\alpha\)</span> can be set to any value. E.g., 0.01 for medical applications.</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<div id="hypothesis-testing---rejection-region" class="section level2">
+<h2>Hypothesis Testing - Rejection Region</h2>
+<ul>
+<li>(Using same TV example from above)</li>
+<li>This is an alternative way of seeing hypothesis testing.</li>
+<li>Find <span class="math inline">\(z_crit\)</span> (in a probability table) such that there is a 5% chance of the event falling to the left of z on the pdf (if <span class="math inline">\(\bar{x}\)</span> is less than the mean): <span class="math inline">\(z_crit\)</span> = -1.65.</li>
+<li>The area to the left of <span class="math inline">\(z_crit\)</span> is the <em>rejection region</em>. The likelihood of randomly picking a sample from the rejection region is 5% or less. If the calculated <span class="math inline">\(z\)</span> is in this region, can reject <span class="math inline">\(H_0\)</span>.</li>
+<li>This approach allows to set a confidence threshold (e.g., 95%) instead of having to look up z exactly in the probability table each time.</li>
+</ul>
+</div>
+<div id="hypothesis-testing-assumptions" class="section level2">
+<h2>Hypothesis Testing Assumptions</h2>
+<ul>
+<li>Z-test assumptions:
+<ul>
+<li><ol style="list-style-type: decimal">
+<li>Sample is selected at random.</li>
+</ol>
+<ul>
+<li>This assumption must hold throughout the entire experiment.</li>
+<li>Simply increasing the sample size does not necessarily remove bias.</li>
+<li>Example - for a phone survey conducted by calling phone numbers from a phone book, this will be biased towards people that still have a landline.</li>
+</ul></li>
+<li><ol start="2" style="list-style-type: decimal">
+<li>Observations are independent.</li>
+</ol>
+<ul>
+<li>Example: surveying the people in a room. If a person overhears others’ examples, there might be peer pressure to respond similarly.</li>
+</ul></li>
+<li><ol start="3" style="list-style-type: decimal">
+<li>Population standard deviation is known, OR the sample contains at least 30 observations (use t-test if &lt;30).</li>
+</ol></li>
+</ul></li>
+</ul>
+</div>
+<div id="proportion-testing" class="section level2">
+<h2>Proportion Testing</h2>
+<ul>
+<li>Challenge: According to a 2016 survey, <em>“a staggering 58% of American households have tablets.”</em> Your manager has asked you to test the Hypothesis (with a 97% significance level) that only 58% of American homes have tablet devices. You surveyed 100 random households and found that 73 of them had tablets.</li>
+<li><span class="math inline">\(H_0\)</span>: 58% or fewer of households have tablets, i.e. <span class="math inline">\(p \loe 58%\)</span>.</li>
+<li><span class="math inline">\(H_1\)</span>: more than 58% have tablets, i.e. <span class="math inline">\(p &gt; 58%\)</span>.
+<ul>
+<li><span class="math inline">\(p\)</span> is proportion.</li>
+</ul></li>
+<li>Perform two checks for proportion test:
+<ul>
+<li><ol style="list-style-type: decimal">
+<li>Check that <span class="math inline">\(n\bar{p}\)</span> &gt; 10.</li>
+</ol>
+<ul>
+<li>In example, <span class="math inline">\(\bar{p}\)</span> = 73/100, <span class="math inline">\(n\)</span> = 100.</li>
+</ul></li>
+<li><ol start="2" style="list-style-type: decimal">
+<li>Check that <span class="math inline">\(n\bar{q}\)</span> &gt; 10.</li>
+</ol>
+<ul>
+<li><span class="math inline">\(\bar{q} = \bar{p}-1\)</span></li>
+<li>In example, ${q} in example is 0.27.</li>
+</ul></li>
+<li>In the sample, the number of positive and negative observations both have to be greater than 10. If condition is not met, increase the sample size.</li>
+</ul></li>
+<li>New formulas (not derived here):
+<ul>
+<li><span class="math inline">\(\mu = p\)</span></li>
+<li><span class="math inline">\(\sigma = \sqrt{pq}\)</span></li>
+</ul></li>
+<li>Calculations:
+<ul>
+<li><span class="math inline">\(\mu_{\bar{p}} = \mu = p = 0.58\)</span> (from CLT)</li>
+<li><span class="math inline">\(\sigma = \sqrt{pq} = \sqrt{(0.58)(0.42)} = 0.49\)</span> (This assumes that <span class="math inline">\(H_0\)</span> is correct to be able to use p=0.58)</li>
+<li>$_{{p}} =  (from CLT)</li>
+<li><span class="math inline">\(\bar{p} = 73/100 = 0.73\)</span> (given in problem)</li>
+<li><span class="math inline">\(z = \frac{\bar{p}-\mu_{\bar{p}}}{\sigma_{\bar{p}}} = \frac{0.73-0.58}{0.049} = 3.06\)</span></li>
+<li>p-value = 1 - 0.9989 = 0.11% &lt; 3%</li>
+</ul></li>
+<li>Therefore, we can reject <span class="math inline">\(H_0\)</span> with &gt;97% confidence and accept <span class="math inline">\(H_1\)</span>.</li>
 </ul>
 </div>
 </div>
