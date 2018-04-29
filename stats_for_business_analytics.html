@@ -298,7 +298,7 @@ $(document).ready(function () {
 <li>Challenge: In 2015, millenials were watching 26.5 hours of TV a week with a <span class="math inline">\(\sigma\)</span> of 10 hours. Today you surveyed 50 millenials and found that they watch 24 hours of TV per week. Has the parameter decreased?</li>
 <li>Steps:
 <ul>
-<li>State the null hypothesis - <span class="math inline">\(H_0\)</span>: the parameter has not decreased, i.e. <span class="math inline">\(\mu \gte 26.5\)</span>.</li>
+<li>State the null hypothesis - <span class="math inline">\(H_0\)</span>: the parameter has not decreased, i.e. <span class="math inline">\(\mu \geq 26.5\)</span>.</li>
 <li>State the alternative hypothesis - <span class="math inline">\(H_1\)</span>: the parameter has decreased, i.e. <span class="math inline">\(\mu &lt; 26.5\)</span>.
 <ul>
 <li>Note: if we reject <span class="math inline">\(H_0\)</span>, we can’t say that the average is 24 hours. We can only say that the average has decreased.</li>
@@ -374,7 +374,7 @@ $(document).ready(function () {
 <h2>Proportion Testing</h2>
 <ul>
 <li>Challenge: According to a 2016 survey, <em>“a staggering 58% of American households have tablets.”</em> Your manager has asked you to test the Hypothesis (with a 97% significance level) that only 58% of American homes have tablet devices. You surveyed 100 random households and found that 73 of them had tablets.</li>
-<li><span class="math inline">\(H_0\)</span>: 58% or fewer of households have tablets, i.e. <span class="math inline">\(p \loe 58%\)</span>.</li>
+<li><span class="math inline">\(H_0\)</span>: 58% or fewer of households have tablets, i.e. <span class="math inline">\(p \leq 58%\)</span>.</li>
 <li><span class="math inline">\(H_1\)</span>: more than 58% have tablets, i.e. <span class="math inline">\(p &gt; 58%\)</span>.
 <ul>
 <li><span class="math inline">\(p\)</span> is proportion.</li>
@@ -388,7 +388,7 @@ $(document).ready(function () {
 <li>In example, <span class="math inline">\(\bar{p}\)</span> = 73/100, <span class="math inline">\(n\)</span> = 100.</li>
 </ul></li>
 <li><ol start="2" style="list-style-type: decimal">
-<li>Check that <span class="math inline">\(n\bar{q}\)</span> &gt; 10.</li>
+<li>Check that <span class="math inline">\(n\bar{q}\)</span> &gt; 10$.</li>
 </ol>
 <ul>
 <li><span class="math inline">\(\bar{q} = \bar{p}-1\)</span></li>
@@ -405,13 +405,40 @@ $(document).ready(function () {
 <ul>
 <li><span class="math inline">\(\mu_{\bar{p}} = \mu = p = 0.58\)</span> (from CLT)</li>
 <li><span class="math inline">\(\sigma = \sqrt{pq} = \sqrt{(0.58)(0.42)} = 0.49\)</span> (This assumes that <span class="math inline">\(H_0\)</span> is correct to be able to use p=0.58)</li>
-<li>$_{{p}} =  (from CLT)</li>
+<li><span class="math inline">\(\sigma_{\bar{p}} = \frac{\sigma}{\sqrt{n}}\)</span> (from CLT)</li>
 <li><span class="math inline">\(\bar{p} = 73/100 = 0.73\)</span> (given in problem)</li>
 <li><span class="math inline">\(z = \frac{\bar{p}-\mu_{\bar{p}}}{\sigma_{\bar{p}}} = \frac{0.73-0.58}{0.049} = 3.06\)</span></li>
 <li>p-value = 1 - 0.9989 = 0.11% &lt; 3%</li>
 </ul></li>
 <li>Therefore, we can reject <span class="math inline">\(H_0\)</span> with &gt;97% confidence and accept <span class="math inline">\(H_1\)</span>.</li>
 </ul>
+</div>
+<div id="homework-challenge" class="section level2">
+<h2>Homework Challenge</h2>
+<div id="question" class="section level3">
+<h3>Question</h3>
+<ul>
+<li>You are a consultant engaged by a factory which manufactures spoons.</li>
+<li>The factory executives recently spent $10MM upgrading equipment and processes in order to combat excessively high defects in manufacturing (23%) which were leading to high return rates from clients.</li>
+<li>You have been asked to prove (with a confidence level of 95%) that new equipment has improved the situation and that the number of defective spoons has decreased to under 18%. You have been supplied with a random sample of 150 spoons and found that 23 spoons have defects.</li>
+</ul>
+</div>
+<div id="solution-1" class="section level3">
+<h3>Solution</h3>
+<ul>
+<li><span class="math inline">\(H_0\)</span>: 18% or more have defects, i.e. <span class="math inline">\(p \geq 18%\)</span>.</li>
+<li><span class="math inline">\(H_1\)</span>: The number of defective spoons has decreased to under 18%.</li>
+<li>Calculations:
+<ul>
+<li><span class="math inline">\(\mu_{\bar{p}} = \mu = p = 0.23\)</span> (from CLT)</li>
+<li><span class="math inline">\(\sigma = \sqrt{pq} = \sqrt{(0.23)(0.77)} = 0.42\)</span> (This assumes that <span class="math inline">\(H_0\)</span> is correct to be able to use p=0.23)</li>
+<li><span class="math inline">\(\sigma_{\bar{p}} = \frac{\sigma}{\sqrt{n}} = 0.0343\)</span> (from CLT)</li>
+<li><span class="math inline">\(\bar{p} = 18/150 = 0.12\)</span> (given in problem)</li>
+<li><span class="math inline">\(z = \frac{\bar{p}-\mu_{\bar{p}}}{\sigma_{\bar{p}}} = \frac{0.12-0.23}{0.0343} = -3.207\)</span></li>
+<li>p-value = 1 - 0.9993 = 0.07% &lt; 5%</li>
+</ul></li>
+</ul>
+</div>
 </div>
 </div>
 
